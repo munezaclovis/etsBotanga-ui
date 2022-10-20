@@ -5,7 +5,7 @@ name: Generate a build and push to another branch
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master", "main" ]
 
 jobs:
   build:
