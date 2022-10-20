@@ -8,7 +8,7 @@ const BackgroundParticles = () => {
         await loadFull(main);
     };
 
-    const particlesLoaded = async (container: Container) => {};
+    const particlesLoaded = async (container?: Container) => {};
 
     const options: RecursivePartial<IOptions> = {
         background: {
