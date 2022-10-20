@@ -1,13 +1,10 @@
-import React, { useContext } from "react";
-import { Link, matchRoutes } from "react-router-dom";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { ThemeContext } from "../../store/theme/context";
 import NavLink from "../utilities/navLink";
 import { Dropdown } from "react-bootstrap";
 import { AuthContext } from "../../store/auth/context";
 import UserAvatar from "../../assets/img/user-avatar.png";
-import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
-import { faChartLine, faKey, faShop, faUsersLine } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "../../assets/vendor/metisMenu/metisMenu.css";
 import { GiCargoShip, GiFizzingFlask } from "react-icons/gi";
 import { IconType } from "react-icons";
