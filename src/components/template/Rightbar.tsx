@@ -14,7 +14,7 @@ import FormErrorMessage from "../form/FormErrorMessage";
 const Rightbar = () => {
     const { theme, setTheme } = useContext(ThemeContext);
     const { cart, cartLoading, loadCart, editQuantity, removeFromCart } = useContext(CartContext);
-    const [checkoutModal, setCheckoutModal] = useState(false);
+    const [checkoutModal, setCheckoutModal] = useState(true);
     const [checkoutLoading, setCheckoutLoading] = useState(false);
     const api = getApi();
     const [checkoutForm, setCheckoutForm] = useState<{
@@ -32,7 +32,7 @@ const Rightbar = () => {
     const checkout = () => {
         setCheckoutLoading(true);
         setCheckoutForm({ ...checkoutForm, errors: undefined });
-        api.post("/orders")
+        api.post("/orders", { ...checkoutForm?.data, cart_id: cart.id })
             .then((res) => {
                 loadCart();
                 setCheckoutForm(undefined);
@@ -76,7 +76,7 @@ const Rightbar = () => {
                         </Modal.Header>
                         <Modal.Body>
                             <FormErrorMessage message={checkoutForm?.errors?.message} />
-                            <div className="form-group">
+                            <div className="mb-3">
                                 <label htmlFor="client" className="fs-6 mb-1">
                                     Client Name
                                 </label>
@@ -89,10 +89,20 @@ const Rightbar = () => {
                                     onChange={(e) =>
                                         setCheckoutForm({
                                             ...checkoutForm,
-                                            data: { client: e.currentTarget.value },
+                                            data: { ...checkoutForm?.data, client: e.currentTarget.value },
                                         })
                                     }
                                 />
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="method" className="fs-6 mb-1">
+                                    Payment Method
+                                </label>
+                                <select name="method" className="form-control form-select">
+                                    <option selected>Choose Payment method</option>
+                                    <option value="cash">Cash</option>
+                                    <option value="debit">Debit</option>
+                                </select>
                             </div>
                             <InputErrors errors={checkoutForm?.errors?.client} />
                         </Modal.Body>

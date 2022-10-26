@@ -1,5 +1,5 @@
 import Notfound from "./components/pages/errors/notfound";
-import { Outlet, RouteObject } from "react-router-dom";
+import { Navigate, Outlet, redirect, RouteObject } from "react-router-dom";
 import Dashboard from "./components/pages/home/dashboard";
 import Login from "./components/pages/authentication/login";
 import Logout from "./components/pages/authentication/logout";
@@ -30,10 +30,15 @@ const routes: Array<IRouteObject> = [
                 children: [
                     {
                         path: "",
+                        element: <Navigate to={"products"} replace={true} />,
+                    },
+                    {
+                        path: "home",
                         element: <Dashboard />,
                     },
                     {
                         path: "products",
+
                         element: <Outlet />,
                         children: [
                             {
@@ -94,11 +99,6 @@ const routes: Array<IRouteObject> = [
                         path: "roles",
                         element: <RolesIndex />,
                         permission: "role:show",
-                    },
-                    {
-                        path: "test",
-                        element: <>Test Route YOOOOOOOOO</>,
-                        permission: "test:show",
                     },
                 ],
             },

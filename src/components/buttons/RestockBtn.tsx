@@ -1,12 +1,11 @@
 import { FC, useContext } from "react";
-import { AiOutlineAppstoreAdd } from "react-icons/ai";
-import { CgExtensionAdd } from "react-icons/cg";
+import { GiCargoShip } from "react-icons/gi";
 import { AuthContext } from "../../store/auth/context";
 
-const CreateBtn: FC<{
+const RestockBtn: FC<{
     onClick?: React.MouseEventHandler<HTMLButtonElement>;
     permission?: `${string}:${string}`;
-}> = ({ onClick, permission }) => {
+}> = ({ onClick, permission: permission }) => {
     const { user } = useContext(AuthContext);
 
     if (!user.details?.roles?.find((x) => x.name === "super-admin")) {
@@ -21,9 +20,9 @@ const CreateBtn: FC<{
             className="btn btn-outline-info btn-sm d-flex align-items-center justify-content-center gap-1"
             onClick={onClick}
         >
-            <CgExtensionAdd className="fs-5" /> <span>Create</span>
+            <GiCargoShip /> <span>Restock</span>
         </button>
     );
 };
 
-export default CreateBtn;
+export default RestockBtn;

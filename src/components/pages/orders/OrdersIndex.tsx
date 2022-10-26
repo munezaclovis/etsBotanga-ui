@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import IOrder from "../../../models/order/IOrder";
 import IPaginate from "../../../models/pagination/IPaginate";
 import getApi from "../../../services/api/getApi";
+import { CartContext } from "../../../store/cart/context";
 import BreadCrumb from "../../utilities/BreadCrumb";
 
 const OrdersIndex = () => {
     const api = getApi();
     const [orders, setOrders] = useState<IPaginate & { data: IOrder[] }>();
+    const { cart } = useContext(CartContext);
     useEffect(() => {
         api.get<IPaginate & { data: IOrder[] }>("orders").then((res) => {
             setOrders(res.data);
         });
-    }, []);
+    }, [cart.items]);
 
     return (
         <>
@@ -27,6 +29,7 @@ const OrdersIndex = () => {
                             <tr>
                                 <th className="w60">#</th>
                                 <th>Owner</th>
+                                <th>Client</th>
                                 <th className="">No Products</th>
                                 <th>Total Price</th>
                                 <th>Date</th>
@@ -42,6 +45,7 @@ const OrdersIndex = () => {
                                     <tr key={index}>
                                         <td className="w60">{index}</td>
                                         <td>{order.owner?.name}</td>
+                                        <td>{order.client}</td>
                                         <td className="">{order.items_count}</td>
                                         <td>{total}</td>
                                         <td>

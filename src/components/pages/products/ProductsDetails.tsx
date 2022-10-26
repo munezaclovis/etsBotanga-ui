@@ -8,6 +8,9 @@ import IProduct from "../../../models/products/IProduct";
 import getApi from "../../../services/api/getApi";
 import hasRole from "../../../services/hooks/hasRole";
 import { AuthContext } from "../../../store/auth/context";
+import { CartContext } from "../../../store/cart/context";
+import { SET_RIGHTBAR } from "../../../store/theme/actions";
+import { ThemeContext } from "../../../store/theme/context";
 import DeleteBtn from "../../buttons/DeleteBtn";
 import OrderBtn from "../../buttons/OrderBtn";
 import BreadCrumb from "../../utilities/BreadCrumb";
@@ -25,6 +28,12 @@ const ProductsDetails = () => {
     const api = getApi();
     const [product, setProduct] = useState<IProduct>({} as IProduct);
     const [editData, setEditData] = useState<EditData>({} as EditData);
+    const { addToCart } = useContext(CartContext);
+    const { setTheme } = useContext(ThemeContext);
+    const addToShoppingCart = ({ id }: { id: string }) => {
+        addToCart({ product_id: id });
+        setTheme(SET_RIGHTBAR(true));
+    };
 
     useEffect(() => {
         api.get<IProduct>(`products/${params.id}?with=price,stock,priceHistory,stockHistory`)
@@ -69,7 +78,11 @@ const ProductsDetails = () => {
                                     </h6>
                                     <span className="text-truncate">{product.summary}</span>
                                     <div className="d-flex items-align-center justify-content-center gap-2 m-t-20">
-                                        <OrderBtn />
+                                        <OrderBtn
+                                            onClick={() => {
+                                                addToShoppingCart({ id: product.id });
+                                            }}
+                                        />
                                         <DeleteBtn />
                                     </div>
                                 </div>

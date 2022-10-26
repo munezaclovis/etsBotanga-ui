@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import IPaginate from "../../../models/pagination/IPaginate";
 import IProduct from "../../../models/products/IProduct";
 import getApi from "../../../services/api/getApi";
+import { AuthContext } from "../../../store/auth/context";
 import { CartContext } from "../../../store/cart/context";
 import { SET_RIGHTBAR } from "../../../store/theme/actions";
 import { ThemeContext } from "../../../store/theme/context";
@@ -19,7 +20,6 @@ const ProductsIndex = () => {
     const { addToCart } = useContext(CartContext);
     const { setTheme } = useContext(ThemeContext);
     const api = getApi();
-    const navigate = useNavigate();
     const addToShoppingCart = ({ id }: { id: string }) => {
         addToCart({ product_id: id });
         setTheme(SET_RIGHTBAR(true));
@@ -33,9 +33,9 @@ const ProductsIndex = () => {
             <div className="block-header">
                 <div className="row clearfix">
                     <BreadCrumb title="Products" />
-                    <div className="col-md-6 col-sm-12 text-right hidden-xs d-flex align-items-center justify-content-end">
+                    {/* <div className="col-md-6 col-sm-12 text-right hidden-xs d-flex align-items-center justify-content-end">
                         <CreateBtn />
-                    </div>
+                    </div> */}
                 </div>
             </div>
             <div className="row clearfix">
@@ -46,12 +46,14 @@ const ProductsIndex = () => {
                                 <div className="card c_grid c_indigo shadow-sm">
                                     <div className="body text-center d-flex flex-column">
                                         <div className="circle">
-                                            <img
-                                                src="https://us.coca-cola.com/content/dam/nagbrands/us/coke/en/home/coca-cola-original-20oz.png"
-                                                className="rounded-circle"
-                                                style={{ height: "90px" }}
-                                                alt="Product"
-                                            />
+                                            <Link to={`${product.id}`}>
+                                                <img
+                                                    src="https://us.coca-cola.com/content/dam/nagbrands/us/coke/en/home/coca-cola-original-20oz.png"
+                                                    className="rounded-circle"
+                                                    style={{ height: "90px" }}
+                                                    alt="Product"
+                                                />
+                                            </Link>
                                         </div>
                                         <h6 className="m-t-20">{product.name}</h6>
                                         <span className="text-truncate">{product.summary}</span>
@@ -61,12 +63,7 @@ const ProductsIndex = () => {
                                                     addToShoppingCart({ id: product.id });
                                                 }}
                                             />
-                                            <DetailsBtn
-                                                onClick={() => {
-                                                    navigate(`${product.id}`);
-                                                }}
-                                            />
-                                            <DeleteBtn />
+                                            <DeleteBtn permission={"product:delete"} />
                                         </div>
                                     </div>
                                 </div>

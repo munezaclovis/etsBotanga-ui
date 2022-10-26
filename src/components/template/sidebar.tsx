@@ -61,7 +61,7 @@ const Sidebar = () => {
                     </div>
                     <nav id="left-sidebar-nav" className="sidebar-nav">
                         <ul id="id-menu" className="metismenu">
-                            <SideBarItem icon={RiDashboardLine} link={""} title={"DashBoard"} />
+                            {/* <SideBarItem icon={RiDashboardLine} link={""} title={"DashBoard"} /> */}
                             <SideBarItem
                                 icon={IoStorefrontSharp}
                                 link={"products"}

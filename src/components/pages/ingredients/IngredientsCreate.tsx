@@ -12,9 +12,22 @@ const IngredientsCreate: FC<{ show: boolean; setShow: Dispatch<boolean> }> = ({ 
                 className="theme-indigo"
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Generate Registration Code</Modal.Title>
+                    <Modal.Title>Create Ingredient</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>Test</Modal.Body>
+                <Modal.Body>
+                    <div className="form-group">
+                        <label htmlFor="client" className="fs-6 mb-1">
+                            Client Name
+                        </label>
+                        <input
+                            type={"text"}
+                            name="client"
+                            className={`form-control`}
+                            value={""}
+                            placeholder={`Client name`}
+                        />
+                    </div>
+                </Modal.Body>
             </Modal>
         </>
     );
