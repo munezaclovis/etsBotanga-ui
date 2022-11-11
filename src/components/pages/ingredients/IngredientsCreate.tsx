@@ -1,34 +1,78 @@
-import { Dispatch, FC } from "react";
+import { AxiosError } from "axios";
+import { Dispatch, FC, useState } from "react";
 import { Modal } from "react-bootstrap";
+import getApi from "../../../services/api/getApi";
+import FormErrorMessage from "../../form/FormErrorMessage";
+import InputErrors from "../../form/InputErrors";
+import BreadCrumb from "../../utilities/BreadCrumb";
 
-const IngredientsCreate: FC<{ show: boolean; setShow: Dispatch<boolean> }> = ({ show, setShow }) => {
+interface IngredientInterface {
+    loading: boolean;
+    data?: { name?: string; image_link?: string; price?: number; discount?: number; quantity?: number };
+    errors?: {
+        message: string;
+        fields: { name?: string[]; image_link?: string[]; price?: string[]; discount?: string[]; quantity?: string[] };
+    };
+}
+
+const IngredientsCreate = () => {
+    const api = getApi();
+    const [ingredient, setIngredient] = useState<IngredientInterface>({
+        loading: false,
+        data: { price: 0, quantity: 0, discount: 0 },
+    });
+    const [addStatus, setAddStatus] = useState<string>();
+    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        // setAddStatus(undefined);
+        // setIngredient((prev) => ({ ...prev, errors: undefined, loading: true }));
+        // api.post<IngredientInterface["data"]>("ingredients", ingredient.data)
+        //     .then((res) => {
+        //         setAddStatus("Ingredient added successfuly");
+        //         setIngredient((prev) => ({ ...prev, errors: undefined, data: undefined }));
+        //     })
+        //     .catch((error: AxiosError<any>) => {
+        //         if (error.code !== "500") {
+        //             setIngredient((prev) => ({
+        //                 ...prev,
+        //                 errors: { message: error.response?.data?.message, fields: error.response?.data.errors },
+        //             }));
+        //         }
+        //     })
+        //     .finally(() => {
+        //         setIngredient((prev) => ({ ...prev, loading: false }));
+        //     });
+    };
+    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setIngredient({ ...ingredient, data: { ...ingredient?.data, [e.target.name]: e.target.value } });
+    };
+
     return (
         <>
-            <Modal
-                show={show}
-                onHide={() => {
-                    setShow(!show);
-                }}
-                className="theme-indigo"
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title>Create Ingredient</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <div className="form-group">
-                        <label htmlFor="client" className="fs-6 mb-1">
-                            Client Name
-                        </label>
-                        <input
-                            type={"text"}
-                            name="client"
-                            className={`form-control`}
-                            value={""}
-                            placeholder={`Client name`}
-                        />
-                    </div>
-                </Modal.Body>
-            </Modal>
+            <BreadCrumb title="Create Ingredient" />
+            {addStatus !== undefined ? <div className="alert alert-success">{addStatus}</div> : ""}
+            <div className="card">
+                <div className="card-body">
+                    <form onSubmit={onSubmit}>
+                        <FormErrorMessage message={ingredient.errors?.message} />
+                        <div className="mb-3">
+                            <label htmlFor="name" className="form-label">
+                                Name
+                            </label>
+                            <input
+                                type="text"
+                                className={`form-control${
+                                    ingredient?.errors?.fields?.name !== undefined ? " border-danger" : ""
+                                }`}
+                                name="name"
+                                value={ingredient?.data?.name ?? ""}
+                                onChange={onChange}
+                            />
+                            <InputErrors errors={ingredient?.errors?.fields?.name} />
+                        </div>
+                    </form>
+                </div>
+            </div>
         </>
     );
 };

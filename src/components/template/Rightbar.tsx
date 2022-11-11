@@ -14,7 +14,7 @@ import FormErrorMessage from "../form/FormErrorMessage";
 const Rightbar = () => {
     const { theme, setTheme } = useContext(ThemeContext);
     const { cart, cartLoading, loadCart, editQuantity, removeFromCart } = useContext(CartContext);
-    const [checkoutModal, setCheckoutModal] = useState(true);
+    const [checkoutModal, setCheckoutModal] = useState(false);
     const [checkoutLoading, setCheckoutLoading] = useState(false);
     const api = getApi();
     const [checkoutForm, setCheckoutForm] = useState<{
@@ -24,7 +24,9 @@ const Rightbar = () => {
     const getTotal = () => {
         let sum = 0;
         cart?.items?.every((item) => {
-            sum += item.quantity * item.product.price?.price!;
+            sum +=
+                item.quantity *
+                (item.product.price?.price! - (item.product.price?.price! * item.product.price?.discount!) / 100);
         });
         return sum;
     };
@@ -40,7 +42,6 @@ const Rightbar = () => {
                 setCheckoutModal(false);
             })
             .catch((error: AxiosError<{ errors?: { client: [string] }; message: string }>) => {
-                console.log("errors:", error.response?.data);
                 setCheckoutForm({
                     ...checkoutForm,
                     errors: { client: error.response?.data?.errors?.client, message: error.response?.data?.message },
@@ -142,7 +143,10 @@ const Rightbar = () => {
                                     <li className="card m-0" key={idx}>
                                         <div className="body mb-2 media d-flex">
                                             <img
-                                                src={`https://us.coca-cola.com/content/dam/nagbrands/us/coke/en/home/coca-cola-original-20oz.png`}
+                                                src={
+                                                    item.product.image_link ||
+                                                    `https://us.coca-cola.com/content/dam/nagbrands/us/coke/en/home/coca-cola-original-20oz.png`
+                                                }
                                                 alt=""
                                                 className="media-object border border-secondary"
                                             />
@@ -152,7 +156,12 @@ const Rightbar = () => {
                                                     {new Intl.NumberFormat("fr-CD", {
                                                         style: "currency",
                                                         currency: "CDF",
-                                                    }).format(item.product.price?.price ?? 1 * item.quantity)}
+                                                    }).format(
+                                                        item.product.price?.price! -
+                                                            (item.product.price?.price! *
+                                                                item.product.price?.discount!) /
+                                                                100 ?? 1 * item.quantity
+                                                    )}
                                                 </span>
                                             </div>
                                             <div className="media-body align-self-center ml-auto d-flex gap-1">

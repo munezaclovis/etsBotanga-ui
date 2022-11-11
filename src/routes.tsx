@@ -14,6 +14,8 @@ import IngredientsIndex from "./components/pages/ingredients/IngredientsIndex";
 import IngredientsDetails from "./components/pages/ingredients/IngredientsDetails";
 import UsersDetails from "./components/pages/users/UsersDetails";
 import OrdersIndex from "./components/pages/orders/OrdersIndex";
+import ProductCreate from "./components/pages/products/ProductCreate";
+import IngredientsCreate from "./components/pages/ingredients/IngredientsCreate";
 
 export interface IRouteObject extends RouteObject {
     permission?: string;
@@ -51,6 +53,11 @@ const routes: Array<IRouteObject> = [
                                 element: <ProductsDetails />,
                                 permission: "product:show",
                             },
+                            {
+                                path: "create",
+                                element: <ProductCreate />,
+                                permission: "product:create",
+                            },
                         ],
                     },
                     {
@@ -65,6 +72,11 @@ const routes: Array<IRouteObject> = [
                             {
                                 path: ":id",
                                 element: <IngredientsDetails />,
+                                permission: "ingredient:show",
+                            },
+                            {
+                                path: "create",
+                                element: <IngredientsCreate />,
                                 permission: "ingredient:show",
                             },
                         ],

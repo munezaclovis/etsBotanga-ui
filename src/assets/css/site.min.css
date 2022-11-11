@@ -1491,9 +1491,7 @@
     transition: all 0.3s ease-out;
     display: block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: block;
+
     font-size: 15px;
     color: #bbbec2;
     border-radius: 0.1875rem;
@@ -1945,10 +1943,6 @@ html #wrapper {
     -o-transition: all 0.4s ease-in-out;
     transition: all 0.4s ease-in-out;
     display: inline-block;
-    vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
     background: transparent;
     border-color: transparent;
     margin-bottom: 30px;
@@ -1985,9 +1979,6 @@ html #wrapper {
 .card .header .header-dropdown li {
     display: inline-block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
 }
 .card .header .header-dropdown li a {
     -webkit-transition: all 0.5s;

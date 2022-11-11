@@ -33,45 +33,37 @@ const IngredientsIndex = () => {
             <div className="block-header">
                 <div className="row clearfix">
                     <BreadCrumb title="Ingredients" />
-                    {/* <div className="col-md-6 col-sm-12 text-right hidden-xs d-flex align-items-center justify-content-end">
-                        <CreateBtn
-                            permission="ingredient:create"
-                            onClick={() => {
-                                setCreateModal(!createModal);
-                            }}
-                        />
-                        {createModal && <IngredientsCreate show={createModal} setShow={setCreateModal} />}
-                    </div> */}
+                    <div className="col-md-6 col-sm-12 text-right hidden-xs d-flex align-items-center justify-content-end">
+                        <Link to={`create`}>{/* <CreateBtn permission="ingredient:create" /> */}</Link>
+                    </div>
                 </div>
             </div>
             <div className="row clear-fix">
                 {ingredients &&
                     ingredients.data.map((ingredient, index) => {
                         return (
-                            <>
-                                <div key={index} className="col-md-6 col-lg-4">
-                                    <div className="card c_grid c_indigo">
-                                        <div className="body text-center d-flex flex-column">
-                                            <div className="circle">
-                                                <Link to={``}>
-                                                    <img
-                                                        src="https://us.coca-cola.com/content/dam/nagbrands/us/coke/en/home/coca-cola-original-20oz.png"
-                                                        className="rounded-circle"
-                                                        style={{ height: "90px" }}
-                                                        alt="Ingredient"
-                                                    />
-                                                </Link>
-                                            </div>
-                                            <div className="m-t-20">{ingredient.name}</div>
-                                            <div className="text-truncate">{ingredient.summary}</div>
-                                            <div className="d-flex items-align-center justify-content-center gap-2 m-t-20">
-                                                <RestockBtn permission="ingredient:update" />
-                                                <DeleteBtn permission="ingredient:delete" />
-                                            </div>
+                            <div key={index} className="col-md-6 col-lg-4">
+                                <div className="card c_grid c_indigo">
+                                    <div className="body text-center d-flex flex-column">
+                                        <div className="circle">
+                                            <Link to={``}>
+                                                <img
+                                                    src="https://us.coca-cola.com/content/dam/nagbrands/us/coke/en/home/coca-cola-original-20oz.png"
+                                                    className="rounded-circle"
+                                                    style={{ height: "90px" }}
+                                                    alt="Ingredient"
+                                                    loading="lazy"
+                                                />
+                                            </Link>
+                                        </div>
+                                        <div className="m-t-20">{ingredient.name}</div>
+                                        <div className="d-flex items-align-center justify-content-center gap-2 m-t-20">
+                                            <RestockBtn permission="ingredient:update" />
+                                            <DeleteBtn permission="ingredient:delete" />
                                         </div>
                                     </div>
                                 </div>
-                            </>
+                            </div>
                         );
                     })}
                 <div className="col mt-2 align-items-center justify-content-center">

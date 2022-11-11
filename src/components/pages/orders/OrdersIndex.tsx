@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import IOrder from "../../../models/order/IOrder";
 import IPaginate from "../../../models/pagination/IPaginate";
 import getApi from "../../../services/api/getApi";
+import { useDateTime } from "../../../services/hooks/useDateTime";
 import { CartContext } from "../../../store/cart/context";
 import BreadCrumb from "../../utilities/BreadCrumb";
 
@@ -26,9 +27,9 @@ const OrdersIndex = () => {
                 <div className="table-responsive">
                     <table className="table header-border table-hover table-custom spacing8">
                         <thead>
-                            <tr>
+                            <tr className="font-weight-bold">
                                 <th className="w60">#</th>
-                                <th>Owner</th>
+                                <th>Order By</th>
                                 <th>Client</th>
                                 <th className="">No Products</th>
                                 <th>Total Price</th>
@@ -49,10 +50,7 @@ const OrdersIndex = () => {
                                         <td className="">{order.items_count}</td>
                                         <td>{total}</td>
                                         <td>
-                                            {Intl.DateTimeFormat("fr-CD", {
-                                                dateStyle: "full",
-                                                timeStyle: "short",
-                                            }).format(new Date(order.created_at))}
+                                            {useDateTime(order.created_at, { dateStyle: "short", timeStyle: "short" })}
                                         </td>
                                     </tr>
                                 );

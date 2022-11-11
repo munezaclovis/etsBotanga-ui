@@ -26,16 +26,18 @@ const ProductsIndex = () => {
     };
 
     useEffect(() => {
-        api.get<IPaginate & { data: IProduct[] }>("products").then((e) => setProducts(e.data));
+        api.get<IPaginate & { data: IProduct[] }>("products?with=price").then((e) => setProducts(e.data));
     }, []);
     return (
         <>
             <div className="block-header">
                 <div className="row clearfix">
                     <BreadCrumb title="Products" />
-                    {/* <div className="col-md-6 col-sm-12 text-right hidden-xs d-flex align-items-center justify-content-end">
-                        <CreateBtn />
-                    </div> */}
+                    <div className="col-md-6 col-sm-12 text-right hidden-xs d-flex align-items-center justify-content-end">
+                        <Link to={`create`}>
+                            <CreateBtn permission="product:create" />
+                        </Link>
+                    </div>
                 </div>
             </div>
             <div className="row clearfix">
@@ -48,15 +50,24 @@ const ProductsIndex = () => {
                                         <div className="circle">
                                             <Link to={`${product.id}`}>
                                                 <img
-                                                    src="https://us.coca-cola.com/content/dam/nagbrands/us/coke/en/home/coca-cola-original-20oz.png"
+                                                    src={
+                                                        product.image_link ||
+                                                        "https://us.coca-cola.com/content/dam/nagbrands/us/coke/en/home/coca-cola-original-20oz.png"
+                                                    }
                                                     className="rounded-circle"
                                                     style={{ height: "90px" }}
                                                     alt="Product"
+                                                    loading="lazy"
                                                 />
                                             </Link>
                                         </div>
                                         <h6 className="m-t-20">{product.name}</h6>
-                                        <span className="text-truncate">{product.summary}</span>
+                                        <span className="font-weight-light">
+                                            {new Intl.NumberFormat("fr-CD", {
+                                                style: "currency",
+                                                currency: "CDF",
+                                            }).format(product.price?.price!)}
+                                        </span>
                                         <div className="d-flex items-align-center justify-content-center gap-2 m-t-20">
                                             <AddToCartBtn
                                                 onClick={() => {

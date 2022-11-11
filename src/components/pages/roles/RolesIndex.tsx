@@ -28,8 +28,8 @@ const RolesIndex = () => {
                                     <div className="body text-center d-flex flex-column">
                                         <h6 className="m-t-20">{role.name}</h6>
                                         <div className="d-flex items-align-center justify-content-center gap-2 m-t-20">
-                                            <button className="btn btn-outline-secondary btn-sm">Details</button>
-                                            <button className="btn btn-outline-danger btn-sm">Delete</button>
+                                            {/* <button className="btn btn-outline-secondary btn-sm">Details</button>
+                                            <button className="btn btn-outline-danger btn-sm">Delete</button> */}
                                         </div>
                                     </div>
                                 </div>

@@ -8,6 +8,7 @@ export default interface IProduct {
     id: string;
     name: string;
     summary: string;
+    image_link: string;
     stock?: IProductStock;
     price?: IProductPrice;
     history?: Array<IProductHistory>;
