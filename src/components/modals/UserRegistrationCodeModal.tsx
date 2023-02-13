@@ -2,7 +2,7 @@ import { AxiosError, AxiosResponse } from "axios";
 import { useContext, useEffect, useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import IRole from "../../models/role/IRole";
-import getApi from "../../services/api/getApi";
+import useApi from "../../services/api/useApi";
 import { SET_REGISTRATION_KEY_MODAL } from "../../store/theme/actions";
 import { ThemeContext } from "../../store/theme/context";
 import { VscLoading } from "react-icons/vsc";
@@ -15,7 +15,7 @@ const UserRegistrationCodeModal = () => {
         setTheme,
     } = useContext(ThemeContext);
 
-    const api = getApi();
+    const api = useApi();
     const [roles, setRoles] = useState<IRole[]>();
     const [data, setData] = useState({ role: "" });
     const [errors, setErrors] = useState<{ role: string[] }>();
@@ -31,9 +31,11 @@ const UserRegistrationCodeModal = () => {
 
     useEffect(() => {
         if (!roles) {
-            api.get<any, AxiosResponse<IRole[]>>("roles?all=true").then((response) => {
-                setRoles(response.data);
-            });
+            api.get<any, AxiosResponse<IRole[]>>("roles?all=true").then(
+                (response) => {
+                    setRoles(response.data);
+                }
+            );
         }
     }, []);
 
@@ -41,7 +43,10 @@ const UserRegistrationCodeModal = () => {
         setLoading(true);
         setErrors(undefined);
         setGeneratedCode(undefined);
-        api.post<{ role: string }, AxiosResponse<{ code: string }>>("registration-code", data)
+        api.post<{ role: string }, AxiosResponse<{ code: string }>>(
+            "registration-code",
+            data
+        )
             .then((response) => {
                 setGeneratedCode(response.data.code);
             })
@@ -57,7 +62,11 @@ const UserRegistrationCodeModal = () => {
 
     return (
         <>
-            <Modal show={registrationKeyModal} onHide={onClose} className="theme-indigo">
+            <Modal
+                show={registrationKeyModal}
+                onHide={onClose}
+                className="theme-indigo"
+            >
                 <Modal.Header closeButton>
                     <Modal.Title>Generate Registration Code</Modal.Title>
                 </Modal.Header>
@@ -68,7 +77,9 @@ const UserRegistrationCodeModal = () => {
                                 User Role
                             </label>
                             <select
-                                className={`form-control selectpicker ${errors?.role ? "border-danger" : ""}`}
+                                className={`form-control selectpicker ${
+                                    errors?.role ? "border-danger" : ""
+                                }`}
                                 name="role"
                                 value={data.role}
                                 onChange={(e) => {
@@ -79,7 +90,10 @@ const UserRegistrationCodeModal = () => {
                                 {roles &&
                                     roles?.map((role, index) => {
                                         return (
-                                            <option key={index} data-tokens={role.name}>
+                                            <option
+                                                key={index}
+                                                data-tokens={role.name}
+                                            >
                                                 {role.name}
                                             </option>
                                         );

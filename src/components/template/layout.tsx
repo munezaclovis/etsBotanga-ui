@@ -5,6 +5,7 @@ import Header from "./header";
 import Rightbar from "./Rightbar";
 import Sidebar from "./sidebar";
 import { SET_RIGHTBAR } from "../../store/theme/actions";
+import { ToastContainer } from "react-bootstrap";
 
 const Layout = () => {
     const {
@@ -30,10 +31,13 @@ const Layout = () => {
                 <Sidebar />
                 <div id="main-content">
                     <div className="container-fluid">
-                        <Outlet />
+                        <div className="mt-3">
+                            <Outlet />
+                        </div>
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };

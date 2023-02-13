@@ -1,8 +1,13 @@
 import { createContext, FC, useState } from "react";
-import { IAuthCredentials, IAuthErrors, IAuthErrorsResponse, ILoginResponse } from "../../models/auth/IAuth";
+import {
+    IAuthCredentials,
+    IAuthErrors,
+    IAuthErrorsResponse,
+    ILoginResponse,
+} from "../../models/auth/IAuth";
 import IPageProps from "../../models/shared/IPageProps";
 import { IUser } from "../../models/shared/user/IUser";
-import getApi from "../../services/api/getApi";
+import useApi from "../../services/api/useApi";
 import { AxiosError, AxiosResponse } from "axios";
 import getAccessToken from "../../services/localstorage/getAccessToken";
 
@@ -16,7 +21,10 @@ interface IStateType {
 
 interface AuthContextType {
     user: IStateType;
-    login: (credentials: { username: string; password: string }, callback: CallableFunction) => void;
+    login: (
+        credentials: { username: string; password: string },
+        callback: CallableFunction
+    ) => void;
     register: (
         credentials: {
             name: string;
@@ -33,7 +41,9 @@ interface AuthContextType {
     setLoading: (status: boolean) => void;
 }
 
-export const AuthContext = createContext<AuthContextType>({} as AuthContextType);
+export const AuthContext = createContext<AuthContextType>(
+    {} as AuthContextType
+);
 
 const AuthProvider: FC<IPageProps> = ({ children }) => {
     const [user, setUser] = useState<IStateType>({
@@ -52,13 +62,19 @@ const AuthProvider: FC<IPageProps> = ({ children }) => {
         } as IStateType);
     };
 
-    const login = (credentials: { username: string; password: string }, callback: CallableFunction) => {
-        const api = getApi();
+    const login = (
+        credentials: { username: string; password: string },
+        callback: CallableFunction
+    ) => {
+        const api = useApi();
         const { setToken } = getAccessToken();
 
         setLoading(true);
 
-        api.post<IAuthCredentials, AxiosResponse<ILoginResponse>>("login", credentials)
+        api.post<IAuthCredentials, AxiosResponse<ILoginResponse>>(
+            "login",
+            credentials
+        )
             .then((response) => {
                 setToken(response.data.access_token);
 
@@ -92,8 +108,10 @@ const AuthProvider: FC<IPageProps> = ({ children }) => {
                         errors: {
                             message: "The given data have failed validation",
                             fields: {
-                                username: error?.response?.data?.errors?.username,
-                                password: error?.response?.data?.errors?.password,
+                                username:
+                                    error?.response?.data?.errors?.username,
+                                password:
+                                    error?.response?.data?.errors?.password,
                             },
                             for: "login",
                         },
@@ -103,7 +121,9 @@ const AuthProvider: FC<IPageProps> = ({ children }) => {
                 } else if (error?.response?.status === 401) {
                     setUser({
                         errors: {
-                            message: error?.response?.data?.message ?? "Login invalid. username/password incorrect",
+                            message:
+                                error?.response?.data?.message ??
+                                "Login invalid. username/password incorrect",
                         },
                         loading: false,
                     } as IStateType);
@@ -123,7 +143,7 @@ const AuthProvider: FC<IPageProps> = ({ children }) => {
         },
         callback: CallableFunction
     ) => {
-        const api = getApi();
+        const api = useApi();
         const { setToken } = getAccessToken();
         setLoading(true);
 
@@ -162,9 +182,13 @@ const AuthProvider: FC<IPageProps> = ({ children }) => {
                             message: "The given data have failed validation",
                             fields: {
                                 name: error?.response?.data?.errors?.name,
-                                username: error?.response?.data?.errors?.username,
-                                password: error?.response?.data?.errors?.password,
-                                password_confirmation: error?.response?.data?.errors?.password_confirmation,
+                                username:
+                                    error?.response?.data?.errors?.username,
+                                password:
+                                    error?.response?.data?.errors?.password,
+                                password_confirmation:
+                                    error?.response?.data?.errors
+                                        ?.password_confirmation,
                                 code: error?.response?.data?.errors?.code,
                             },
                             for: "register",
@@ -179,7 +203,7 @@ const AuthProvider: FC<IPageProps> = ({ children }) => {
     };
     const logout = () => {
         const { setToken } = getAccessToken();
-        const api = getApi();
+        const api = useApi();
 
         api.get("logout").catch((error) => {});
 
@@ -187,7 +211,7 @@ const AuthProvider: FC<IPageProps> = ({ children }) => {
         setUser({ isLoggedIn: false } as IStateType);
     };
     const loginWithToken = () => {
-        const api = getApi();
+        const api = useApi();
         const { token, setToken } = getAccessToken();
 
         api.get("/me")
@@ -239,7 +263,9 @@ const AuthProvider: FC<IPageProps> = ({ children }) => {
         setLoading,
     };
 
-    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+    return (
+        <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+    );
 };
 
 export default AuthProvider;

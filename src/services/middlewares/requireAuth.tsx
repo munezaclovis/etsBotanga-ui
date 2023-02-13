@@ -1,17 +1,22 @@
-import React, { useContext } from "react";
-import { matchRoutes, useLocation, useResolvedPath, useRoutes } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { matchRoutes, useLocation } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import Layout from "../../components/template/layout";
 import settings from "../../data/settings";
-import routes, { IRouteObject } from "../../routes";
+import routes, { IRouteObject } from "../../router";
 import { AuthContext } from "../../store/auth/context";
 
 const RequireAuth = () => {
     const location = useLocation();
     const { user, loginWithToken } = useContext(AuthContext);
 
-    if (!localStorage.getItem(settings.access_token_name) && !user?.isLoggedIn) {
-        return <Navigate to="login" state={{ from: location.pathname }} replace />;
+    if (
+        !localStorage.getItem(settings.access_token_name) &&
+        !user?.isLoggedIn
+    ) {
+        return (
+            <Navigate to="login" state={{ from: location.pathname }} replace />
+        );
     }
 
     if (!user.isLoggedIn) {
@@ -20,7 +25,9 @@ const RequireAuth = () => {
 
     if (user.details?.roles?.at(0)?.name !== "super-admin") {
         const routeMatches = matchRoutes(routes, location);
-        const currentRouteObj = routeMatches?.find((x) => x.pathname === location.pathname);
+        const currentRouteObj = routeMatches?.find(
+            (x) => x.pathname === location.pathname
+        );
 
         if (
             (currentRouteObj?.route as IRouteObject).permission !== "" &&
@@ -29,10 +36,20 @@ const RequireAuth = () => {
             if (
                 !user.details?.roles
                     ?.at(0)
-                    ?.permissions?.find((x) => x.name === (currentRouteObj?.route as IRouteObject).permission)
+                    ?.permissions?.find(
+                        (x) =>
+                            x.name ===
+                            (currentRouteObj?.route as IRouteObject).permission
+                    )
             ) {
                 if (user.isLoggedIn) {
-                    return <Navigate to="/" state={{ from: location.pathname }} replace />;
+                    return (
+                        <Navigate
+                            to="/"
+                            state={{ from: location.pathname }}
+                            replace
+                        />
+                    );
                 }
             }
         }

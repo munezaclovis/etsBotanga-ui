@@ -1,9 +1,5 @@
-import { Container, loadFont, IOptions, RecursivePartial } from "tsparticles-engine";
-import { loadFull } from "tsparticles";
-import React from "react";
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
-import Particles from "react-tsparticles";
 import BackgroundParticles from "../utilities/BackgroundParticles";
 
 const AuthLayout = () => {

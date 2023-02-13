@@ -5,3 +5,8 @@ export default interface IProductPrice extends IModel {
     price: number;
     discount: number;
 }
+
+export interface IProductPriceUpdate {
+    price: number;
+    discount: number;
+}

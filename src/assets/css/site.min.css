@@ -1988,9 +1988,6 @@ html #wrapper {
     transition: all 0.5s;
     display: block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: block;
     padding: 5px 10px;
     color: #57595d;
     font-size: 14px;
@@ -2033,9 +2030,6 @@ html #wrapper {
 .card .header h2 small {
     display: block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: block;
     font-size: 13px;
     color: #77797c;
     line-height: 15px;
@@ -2250,16 +2244,10 @@ html #wrapper {
 .navbar-nav {
     display: inline-block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
 }
 .navbar-nav > li {
     display: inline-block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
     vertical-align: middle;
 }
 .navbar-nav > li > a {
@@ -2320,12 +2308,8 @@ html #wrapper {
     -o-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
     display: inline-block;
-    vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
     color: rgba(255, 255, 255, 0.4);
-    padding: 20px 15px;
+    padding: 18px 15px;
     position: relative;
 }
 @media screen and (max-width: 1024px) {
@@ -2481,11 +2465,7 @@ html #wrapper {
 }
 #left-sidebar .navbar-brand {
     display: block;
-    vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: block;
-    padding: 0 0 16px 0;
+    padding: 0 0 17px 0;
     margin: 15px 10px 0 10px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -2505,9 +2485,6 @@ html #wrapper {
 #left-sidebar .navbar-brand span {
     display: inline-block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
     font-size: 18px;
     color: #e2e4e7;
     vertical-align: middle;
@@ -2547,9 +2524,6 @@ html #wrapper {
     border-radius: 4px;
     display: inline-block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
     padding: 2px;
     vertical-align: top;
 }
@@ -2562,9 +2536,6 @@ html #wrapper {
 .user-account .user-name {
     display: block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: block;
     color: inherit;
 }
 .user-account .user-name:hover,
@@ -2574,9 +2545,6 @@ html #wrapper {
 .user-account .dropdown {
     display: inline-block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
 }
 .user-account .dropdown .dropdown-menu {
     border-radius: 0.55rem;
@@ -2595,9 +2563,6 @@ html #wrapper {
 .user-account .dropdown .dropdown-menu a {
     display: block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: block;
     font-size: 14px;
     color: #77797c;
     padding: 10px;
@@ -2770,9 +2735,6 @@ html #wrapper {
 .themesetting .theme_btn {
     display: inline-block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
     border-radius: 0.1875rem 0 0 0.1875rem;
     background: #fff;
     width: 35px;
@@ -2797,9 +2759,6 @@ ul.choose-skin li div {
     border-radius: 3px;
     display: inline-block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
     height: 30px;
     width: 30px;
     overflow: hidden;
@@ -2971,9 +2930,6 @@ ul.choose-skin li.active div::after {
 .fancy-checkbox input[type="checkbox"] + span {
     display: inline-block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
     cursor: pointer;
     position: relative;
 }
@@ -2983,9 +2939,6 @@ ul.choose-skin li.active div::after {
     border-radius: 3px;
     display: inline-block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
     position: relative;
     bottom: 1px;
     width: 20px;
@@ -3028,9 +2981,6 @@ ul.choose-skin li.active div::after {
 .fancy-radio input[type="radio"] + span svg {
     display: inline-block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
@@ -3094,9 +3044,6 @@ ul.choose-skin li.active div::after {
 .multiselect-custom + .btn-group ul.multiselect-container > li > a label.checkbox:before {
     display: inline-block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
     position: relative;
     bottom: 1px;
     content: "";
@@ -3133,9 +3080,6 @@ ul.choose-skin li.active div::after {
 .multiselect-custom + .btn-group ul.multiselect-container > li > a label.radio:before {
     display: inline-block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
@@ -3314,16 +3258,10 @@ select.form-control:not([size]):not([multiple]) {
     color: #9a9a9a;
     display: block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: block;
 }
 .auth-main .btn-signin-social {
     display: block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: block;
     background-color: #fff;
     border-color: #e2e4e7;
     font-weight: 400;
@@ -3446,9 +3384,6 @@ select.form-control:not([size]):not([multiple]) {
     color: #9a9a9a;
     display: block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: block;
 }
 @media screen and (max-width: 992px) {
     .auth-main2 {
@@ -3590,18 +3525,12 @@ select.form-control:not([size]):not([multiple]) {
 .metric-inline svg {
     display: block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: block;
     margin-bottom: 12px;
     color: #9a9a9a;
 }
 .metric-inline span {
     display: block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: block;
     font-size: 20px;
 }
 .separator-linethrough {
@@ -3611,9 +3540,6 @@ select.form-control:not([size]):not([multiple]) {
 .separator-linethrough span {
     display: inline-block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
     font-size: 18px;
     padding: 0 10px;
     position: inherit;
@@ -3623,9 +3549,6 @@ select.form-control:not([size]):not([multiple]) {
 .separator-linethrough:after {
     display: block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: block;
     position: absolute;
     top: 50%;
     width: 100%;
@@ -3649,18 +3572,12 @@ select.form-control:not([size]):not([multiple]) {
 .block-header .breadcrumb {
     display: inline-block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
     background: transparent;
     font-size: 14px;
 }
 .block-header .breadcrumb li {
     display: inline-block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
 }
 #toast-container > div {
     opacity: 1;
@@ -3778,9 +3695,6 @@ select.form-control:not([size]):not([multiple]) {
     transition: all 0.3s ease-in-out;
     display: inline-block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
     content: "\f138";
     font-family: "FontAwesome";
 }
@@ -3950,9 +3864,6 @@ select.form-control:not([size]):not([multiple]) {
 .panel-group .panel .panel-title > a {
     display: block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: block;
     padding: 10px 15px;
 }
 .panel-group .panel .panel-title > a:hover,
@@ -3974,9 +3885,6 @@ select.form-control:not([size]):not([multiple]) {
 .panel-group .panel .panel-title > a.collapsed .icon-collapsed {
     display: inline-block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
     vertical-align: baseline;
 }
 .pagination > li > a,
@@ -4175,9 +4083,6 @@ select.form-control:not([size]):not([multiple]) {
 .bd-example-border-utils [class^="border"] {
     display: inline-block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
     width: 5rem;
     height: 5rem;
     margin: 0.25rem;
@@ -4486,9 +4391,6 @@ select.form-control:not([size]):not([multiple]) {
 .ct-legend li {
     display: inline-block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
     position: relative;
     padding-left: 16px;
     margin-bottom: 3px;
@@ -7057,18 +6959,12 @@ hr {
     position: relative;
     display: block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: block;
     width: 100%;
     margin-top: 10px !important;
 }
 .wizard .actions ul {
     display: inline-block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
 }
 .wizard .actions ul > li {
     float: left;
@@ -7082,9 +6978,6 @@ hr {
     transition: all 0.5s ease-out;
     display: block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: block;
     -webkit-border-radius: 35px;
     -moz-border-radius: 35px;
     border-radius: 35px;
@@ -7096,9 +6989,6 @@ hr {
 .wizard .actions a:active {
     display: block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: block;
     padding: 0.5em 2em;
     color: #fff;
     text-decoration: none;
@@ -7116,18 +7006,12 @@ hr {
     position: relative;
     display: block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: block;
     width: 100%;
     margin-bottom: 2px;
 }
 .wizard .steps a {
     display: block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: block;
     width: auto;
     margin: 0 2px 0 0;
     padding: 10px;
@@ -7138,9 +7022,6 @@ hr {
 .wizard .steps a:active {
     display: block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: block;
     width: auto;
     margin: 0 2px 0 0;
     padding: 10px;
@@ -7587,9 +7468,6 @@ hr {
 .chat-widget li.right .chat-info {
     display: inline-block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
     color: #77797c;
     border-radius: 10px 0 10px 10px;
 }
@@ -7602,9 +7480,6 @@ hr {
 .chat-widget li .chat-info {
     display: inline-block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
     width: calc(100% - 60px);
     padding: 10px;
     position: relative;
@@ -7623,9 +7498,6 @@ hr {
 .chat-widget li .message {
     display: block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: block;
 }
 .chat-widget li img {
     height: 40px;
@@ -7674,9 +7546,6 @@ hr {
 .shopping_cart .media .name {
     display: block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: block;
     font-size: 15px;
     color: #bbbec2;
     margin: 0;
@@ -7685,17 +7554,11 @@ hr {
 .shopping_cart .media .message {
     display: inline-block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
     color: #96989c;
 }
 .shopping_cart .media .status {
     display: inline-block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
     border-radius: 50px;
@@ -7767,9 +7630,6 @@ hr {
 .feeds_widget li .feeds-body > small {
     display: block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: block;
     font-size: 14px;
     color: #77797c;
 }
@@ -7805,9 +7665,6 @@ hr {
 .w_summary .s_detail span {
     display: inline-block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
 }
 .stamp {
     -webkit-border-radius: 3px;
@@ -7847,9 +7704,6 @@ hr {
     border-radius: 3px;
     display: inline-block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
     background: #2f3338;
     color: #a5a8ad;
     font-weight: 600;
@@ -8322,9 +8176,6 @@ hr {
 .chatapp_body .chat-history .message_data li .message {
     display: inline-block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
     font-size: 15px;
     padding: 18px 20px;
     line-height: 26px;
@@ -8455,9 +8306,6 @@ hr {
     transition: all 0.3s ease-in-out;
     display: block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: block;
     width: 230px;
 }
 .mail-inbox .mail-left .mail-side .nav {
@@ -8893,9 +8741,6 @@ hr {
 .fc .fc-view-container .fc-event:active .fc-overlay {
     display: block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: block;
 }
 .fc .fc-view-container .fc-view.fc-basic-view > table > thead tr th.fc-widget-header,
 .fc .fc-view-container .fc-view.fc-basic-view > table > thead tr td.fc-widget-header,
@@ -9143,9 +8988,6 @@ hr {
 .invoice1 .info {
     display: block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: block;
     float: left;
 }
 .invoice1 .invoice-top .title {
@@ -9269,9 +9111,6 @@ hr {
 .member-card .text-pink {
     display: block;
     vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: block;
 }
 .rtl {
     direction: rtl;

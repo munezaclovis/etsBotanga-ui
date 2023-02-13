@@ -1,22 +1,27 @@
 import { useContext, useEffect, useState } from "react";
-import { AiOutlineCloseCircle, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import {
+    AiOutlineCloseCircle,
+    AiOutlineMinus,
+    AiOutlinePlus,
+} from "react-icons/ai";
 import { SET_RIGHTBAR } from "../../store/theme/actions";
 import { ThemeContext } from "../../store/theme/context";
 import { CartContext } from "../../store/cart/context";
 import DeleteBtn from "../buttons/DeleteBtn";
 import { Button, Modal } from "react-bootstrap";
 import LoadingSpinner from "../utilities/LoadingSpinner";
-import getApi from "../../services/api/getApi";
+import useApi from "../../services/api/useApi";
 import InputErrors from "../form/InputErrors";
 import { AxiosError } from "axios";
 import FormErrorMessage from "../form/FormErrorMessage";
 
 const Rightbar = () => {
     const { theme, setTheme } = useContext(ThemeContext);
-    const { cart, cartLoading, loadCart, editQuantity, removeFromCart } = useContext(CartContext);
+    const { cart, cartLoading, loadCart, editQuantity, removeFromCart } =
+        useContext(CartContext);
     const [checkoutModal, setCheckoutModal] = useState(false);
     const [checkoutLoading, setCheckoutLoading] = useState(false);
-    const api = getApi();
+    const api = useApi();
     const [checkoutForm, setCheckoutForm] = useState<{
         data?: { client?: string };
         errors?: { client?: [string]; message?: string };
@@ -26,7 +31,10 @@ const Rightbar = () => {
         cart?.items?.every((item) => {
             sum +=
                 item.quantity *
-                (item.product.price?.price! - (item.product.price?.price! * item.product.price?.discount!) / 100);
+                (item.product.price?.price! -
+                    (item.product.price?.price! *
+                        item.product.price?.discount!) /
+                        100);
         });
         return sum;
     };
@@ -41,12 +49,22 @@ const Rightbar = () => {
                 setTheme(SET_RIGHTBAR(false));
                 setCheckoutModal(false);
             })
-            .catch((error: AxiosError<{ errors?: { client: [string] }; message: string }>) => {
-                setCheckoutForm({
-                    ...checkoutForm,
-                    errors: { client: error.response?.data?.errors?.client, message: error.response?.data?.message },
-                });
-            })
+            .catch(
+                (
+                    error: AxiosError<{
+                        errors?: { client: [string] };
+                        message: string;
+                    }>
+                ) => {
+                    setCheckoutForm({
+                        ...checkoutForm,
+                        errors: {
+                            client: error.response?.data?.errors?.client,
+                            message: error.response?.data?.message,
+                        },
+                    });
+                }
+            )
             .finally(() => {
                 setCheckoutLoading(false);
             });
@@ -57,11 +75,16 @@ const Rightbar = () => {
     }, [theme.rightbar]);
 
     return (
-        <div id="rightbar" className={`rightbar shadow${theme.rightbar ? " open" : ""}`}>
+        <div
+            id="rightbar"
+            className={`rightbar shadow${theme.rightbar ? " open" : ""}`}
+        >
             <div className="body d-flex flex-column h-100">
                 <div className="d-flex justify-content-between align-items-center border border-secondary mx-1 my-2 p-2">
                     <div
-                        className={`btn btn-info${cart?.items?.length > 0 ? `` : ` visually-hidden`}`}
+                        className={`btn btn-info${
+                            cart?.items?.length > 0 ? `` : ` visually-hidden`
+                        }`}
                         onClick={() => setCheckoutModal(true)}
                     >
                         Checkout
@@ -76,7 +99,9 @@ const Rightbar = () => {
                             <Modal.Title>Checkout</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                            <FormErrorMessage message={checkoutForm?.errors?.message} />
+                            <FormErrorMessage
+                                message={checkoutForm?.errors?.message}
+                            />
                             <div className="mb-3">
                                 <label htmlFor="client" className="fs-6 mb-1">
                                     Client Name
@@ -84,13 +109,20 @@ const Rightbar = () => {
                                 <input
                                     type={"text"}
                                     name="client"
-                                    className={`form-control${checkoutForm?.errors?.client ? " border-danger" : ""}`}
+                                    className={`form-control${
+                                        checkoutForm?.errors?.client
+                                            ? " border-danger"
+                                            : ""
+                                    }`}
                                     value={checkoutForm?.data?.client ?? ""}
                                     placeholder={`Client name`}
                                     onChange={(e) =>
                                         setCheckoutForm({
                                             ...checkoutForm,
-                                            data: { ...checkoutForm?.data, client: e.currentTarget.value },
+                                            data: {
+                                                ...checkoutForm?.data,
+                                                client: e.currentTarget.value,
+                                            },
                                         })
                                     }
                                 />
@@ -99,19 +131,32 @@ const Rightbar = () => {
                                 <label htmlFor="method" className="fs-6 mb-1">
                                     Payment Method
                                 </label>
-                                <select name="method" className="form-control form-select">
-                                    <option selected>Choose Payment method</option>
+                                <select
+                                    name="method"
+                                    className="form-control form-select"
+                                >
+                                    <option selected>
+                                        Choose Payment method
+                                    </option>
                                     <option value="cash">Cash</option>
                                     <option value="debit">Debit</option>
                                 </select>
                             </div>
-                            <InputErrors errors={checkoutForm?.errors?.client} />
+                            <InputErrors
+                                errors={checkoutForm?.errors?.client}
+                            />
                         </Modal.Body>
                         <Modal.Footer>
-                            <Button variant="secondary" onClick={() => setCheckoutModal(false)}>
+                            <Button
+                                variant="secondary"
+                                onClick={() => setCheckoutModal(false)}
+                            >
                                 Close
                             </Button>
-                            <Button variant="primary" onClick={() => checkout()}>
+                            <Button
+                                variant="primary"
+                                onClick={() => checkout()}
+                            >
                                 {checkoutLoading && <LoadingSpinner />} Confirm
                             </Button>
                         </Modal.Footer>
@@ -134,7 +179,9 @@ const Rightbar = () => {
                                     style={{ width: "65px", height: "65px" }}
                                     role="status"
                                 >
-                                    <span className="visually-hidden">Loading...</span>
+                                    <span className="visually-hidden">
+                                        Loading...
+                                    </span>
                                 </div>
                             </div>
                         ) : (
@@ -151,16 +198,26 @@ const Rightbar = () => {
                                                 className="media-object border border-secondary"
                                             />
                                             <div className="media-body">
-                                                <span className="name">{item.product.name}</span>
+                                                <span className="name">
+                                                    {item.product.name}
+                                                </span>
                                                 <span className="message">
-                                                    {new Intl.NumberFormat("fr-CD", {
-                                                        style: "currency",
-                                                        currency: "CDF",
-                                                    }).format(
-                                                        item.product.price?.price! -
-                                                            (item.product.price?.price! *
-                                                                item.product.price?.discount!) /
-                                                                100 ?? 1 * item.quantity
+                                                    {new Intl.NumberFormat(
+                                                        "fr-CD",
+                                                        {
+                                                            style: "currency",
+                                                            currency: "CDF",
+                                                        }
+                                                    ).format(
+                                                        item.product.price
+                                                            ?.price! -
+                                                            (item.product.price
+                                                                ?.price! *
+                                                                item.product
+                                                                    .price
+                                                                    ?.discount!) /
+                                                                100 ??
+                                                            1 * item.quantity
                                                     )}
                                                 </span>
                                             </div>
@@ -169,8 +226,10 @@ const Rightbar = () => {
                                                     className="text-warning pointer"
                                                     onClick={() => {
                                                         editQuantity({
-                                                            cart_item_id: item.id,
-                                                            product_id: item.product.id,
+                                                            cart_item_id:
+                                                                item.id,
+                                                            product_id:
+                                                                item.product.id,
                                                             quantity: -1,
                                                         });
                                                     }}
@@ -184,8 +243,10 @@ const Rightbar = () => {
                                                     className="text-primary pointer"
                                                     onClick={() => {
                                                         editQuantity({
-                                                            cart_item_id: item.id,
-                                                            product_id: item.product.id,
+                                                            cart_item_id:
+                                                                item.id,
+                                                            product_id:
+                                                                item.product.id,
                                                             quantity: 1,
                                                         });
                                                     }}
@@ -196,8 +257,11 @@ const Rightbar = () => {
                                                     <DeleteBtn
                                                         onClick={() => {
                                                             removeFromCart({
-                                                                cart_item_id: item.id,
-                                                                product_id: item.product.id,
+                                                                cart_item_id:
+                                                                    item.id,
+                                                                product_id:
+                                                                    item.product
+                                                                        .id,
                                                             });
                                                         }}
                                                         text={false}
