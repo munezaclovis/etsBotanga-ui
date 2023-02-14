@@ -10,7 +10,11 @@ const OrderBtn: FC<{
 
     if (!user.details?.roles?.find((x) => x.name === "super-admin")) {
         if (permission !== undefined) {
-            if (!user.details?.roles?.at(0)?.permissions?.find((x) => x.name === permission)) {
+            if (
+                !user.details?.roles
+                    ?.at(0)
+                    ?.permissions?.find((x) => x.name === permission)
+            ) {
                 return <></>;
             }
         }

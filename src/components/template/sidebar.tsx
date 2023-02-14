@@ -1,17 +1,16 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
-import { ThemeContext } from "../../store/theme/context";
-import NavLink from "../utilities/navLink";
 import { Dropdown } from "react-bootstrap";
-import { AuthContext } from "../../store/auth/context";
+import { IconType } from "react-icons";
+import { FaUsers } from "react-icons/fa";
+import { GiCargoShip, GiFizzingFlask } from "react-icons/gi";
+import { IoStorefrontSharp } from "react-icons/io5";
+import { VscKey } from "react-icons/vsc";
+import { Link } from "react-router-dom";
 import UserAvatar from "../../assets/img/user-avatar.png";
 import "../../assets/vendor/metisMenu/metisMenu.css";
-import { GiCargoShip, GiFizzingFlask } from "react-icons/gi";
-import { IconType } from "react-icons";
-import { RiDashboardLine } from "react-icons/ri";
-import { IoStorefrontSharp } from "react-icons/io5";
-import { FaUsers } from "react-icons/fa";
-import { VscKey } from "react-icons/vsc";
+import { AuthContext } from "../../store/auth/context";
+import { ThemeContext } from "../../store/theme/context";
+import NavLink from "../utilities/navLink";
 
 const Sidebar = () => {
     const { theme } = useContext(ThemeContext);

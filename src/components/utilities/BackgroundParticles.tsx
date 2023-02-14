@@ -1,7 +1,6 @@
-import React from "react";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
-import { Container, RecursivePartial, IOptions } from "tsparticles-engine";
+import { Container, IOptions, RecursivePartial } from "tsparticles-engine";
 
 const BackgroundParticles = () => {
     const particlesInit = async (main: any) => {
@@ -80,7 +79,14 @@ const BackgroundParticles = () => {
             },
         },
     };
-    return <Particles id="tsparticles" init={particlesInit} loaded={particlesLoaded} options={options} />;
+    return (
+        <Particles
+            id="tsparticles"
+            init={particlesInit}
+            loaded={particlesLoaded}
+            options={options}
+        />
+    );
 };
 
 export default BackgroundParticles;

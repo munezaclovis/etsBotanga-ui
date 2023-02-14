@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import { Outlet } from "react-router-dom";
-import { ThemeContext } from "../../store/theme/context";
-import Header from "./header";
-import Rightbar from "./Rightbar";
-import Sidebar from "./sidebar";
-import { SET_RIGHTBAR } from "../../store/theme/actions";
 import { ToastContainer } from "react-bootstrap";
+import { Outlet } from "react-router-dom";
+import { SET_RIGHTBAR } from "../../store/theme/actions";
+import { ThemeContext } from "../../store/theme/context";
+import Rightbar from "./Rightbar";
+import Header from "./header";
+import Sidebar from "./sidebar";
 
 const Layout = () => {
     const {

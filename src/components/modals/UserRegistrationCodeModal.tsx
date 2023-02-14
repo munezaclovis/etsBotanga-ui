@@ -5,9 +5,8 @@ import IRole from "../../models/role/IRole";
 import useApi from "../../services/api/useApi";
 import { SET_REGISTRATION_KEY_MODAL } from "../../store/theme/actions";
 import { ThemeContext } from "../../store/theme/context";
-import { VscLoading } from "react-icons/vsc";
-import LoadingSpinner from "../utilities/LoadingSpinner";
 import InputErrors from "../form/InputErrors";
+import LoadingSpinner from "../utilities/LoadingSpinner";
 
 const UserRegistrationCodeModal = () => {
     const {

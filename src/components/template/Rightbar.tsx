@@ -1,19 +1,19 @@
+import { AxiosError } from "axios";
 import { useContext, useEffect, useState } from "react";
+import { Button, Modal } from "react-bootstrap";
 import {
     AiOutlineCloseCircle,
     AiOutlineMinus,
     AiOutlinePlus,
 } from "react-icons/ai";
+import useApi from "../../services/api/useApi";
+import { CartContext } from "../../store/cart/context";
 import { SET_RIGHTBAR } from "../../store/theme/actions";
 import { ThemeContext } from "../../store/theme/context";
-import { CartContext } from "../../store/cart/context";
 import DeleteBtn from "../buttons/DeleteBtn";
-import { Button, Modal } from "react-bootstrap";
-import LoadingSpinner from "../utilities/LoadingSpinner";
-import useApi from "../../services/api/useApi";
-import InputErrors from "../form/InputErrors";
-import { AxiosError } from "axios";
 import FormErrorMessage from "../form/FormErrorMessage";
+import InputErrors from "../form/InputErrors";
+import LoadingSpinner from "../utilities/LoadingSpinner";
 
 const Rightbar = () => {
     const { theme, setTheme } = useContext(ThemeContext);

@@ -1,15 +1,17 @@
-import React, { useContext, useState } from "react";
-import { ThemeContext } from "../../store/theme/context";
-import { AuthContext } from "../../store/auth/context";
-import { Link } from "react-router-dom";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faMagnifyingGlass, faPowerOff } from "@fortawesome/free-solid-svg-icons";
-import { GiHouseKeys, GiThreeKeys } from "react-icons/gi";
-import { Button, Modal } from "react-bootstrap";
-import { SET_REGISTRATION_KEY_MODAL, SET_RIGHTBAR } from "../../store/theme/actions";
-import UserRegistrationCodeModal from "../modals/UserRegistrationCodeModal";
+import { useContext } from "react";
 import { AiOutlinePoweroff } from "react-icons/ai";
 import { BsCart3 } from "react-icons/bs";
+import { GiThreeKeys } from "react-icons/gi";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../store/auth/context";
+import {
+    SET_REGISTRATION_KEY_MODAL,
+    SET_RIGHTBAR,
+} from "../../store/theme/actions";
+import { ThemeContext } from "../../store/theme/context";
+import UserRegistrationCodeModal from "../modals/UserRegistrationCodeModal";
 
 const Header = () => {
     const {
@@ -32,8 +34,15 @@ const Header = () => {
                             <Link to={""}>
                                 <h4 className="img-fluid logo">Botanga</h4>
                             </Link>
-                            <button type="button" className="btn-toggle-offcanvas" onClick={() => {}}>
-                                <FontAwesomeIcon icon={faBars} className="lnr lnr-menu" />
+                            <button
+                                type="button"
+                                className="btn-toggle-offcanvas"
+                                onClick={() => {}}
+                            >
+                                <FontAwesomeIcon
+                                    icon={faBars}
+                                    className="lnr lnr-menu"
+                                />
                             </button>
                         </div>
                     </div>
@@ -43,7 +52,11 @@ const Header = () => {
                             <li>
                                 <span
                                     onClick={() => {
-                                        setTheme(SET_REGISTRATION_KEY_MODAL(!registrationKeyModal));
+                                        setTheme(
+                                            SET_REGISTRATION_KEY_MODAL(
+                                                !registrationKeyModal
+                                            )
+                                        );
                                     }}
                                     className="icon-menu cursor-pointer"
                                     title="Search Result"
@@ -75,7 +88,11 @@ const Header = () => {
                     </div>
                 </div>
                 <div className="progress-container">
-                    <div style={progressBarStyle} className="progress-bar" id="myBar"></div>
+                    <div
+                        style={progressBarStyle}
+                        className="progress-bar"
+                        id="myBar"
+                    ></div>
                 </div>
             </nav>
 

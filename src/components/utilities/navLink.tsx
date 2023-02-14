@@ -1,6 +1,10 @@
-import React, { FC, ReactNode } from "react";
-import { Link } from "react-router-dom";
-import { matchRoutes, useLocation, useResolvedPath } from "react-router-dom";
+import { FC, ReactNode } from "react";
+import {
+    Link,
+    matchRoutes,
+    useLocation,
+    useResolvedPath,
+} from "react-router-dom";
 import routes from "../../router";
 
 interface LinkType {

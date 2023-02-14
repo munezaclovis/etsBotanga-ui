@@ -1,5 +1,3 @@
-import React from "react";
-
 const TableHeader = (data: { columns: string[] }) => {
     return (
         <thead>

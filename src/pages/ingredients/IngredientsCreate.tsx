@@ -1,3 +1,4 @@
+import { AxiosError } from "axios";
 import { useState } from "react";
 import FormErrorMessage from "../../components/form/FormErrorMessage";
 import InputErrors from "../../components/form/InputErrors";
@@ -34,24 +35,35 @@ const IngredientsCreate = () => {
     const [addStatus, setAddStatus] = useState<string>();
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // setAddStatus(undefined);
-        // setIngredient((prev) => ({ ...prev, errors: undefined, loading: true }));
-        // api.post<IngredientInterface["data"]>("ingredients", ingredient.data)
-        //     .then((res) => {
-        //         setAddStatus("Ingredient added successfuly");
-        //         setIngredient((prev) => ({ ...prev, errors: undefined, data: undefined }));
-        //     })
-        //     .catch((error: AxiosError<any>) => {
-        //         if (error.code !== "500") {
-        //             setIngredient((prev) => ({
-        //                 ...prev,
-        //                 errors: { message: error.response?.data?.message, fields: error.response?.data.errors },
-        //             }));
-        //         }
-        //     })
-        //     .finally(() => {
-        //         setIngredient((prev) => ({ ...prev, loading: false }));
-        //     });
+        setAddStatus(undefined);
+        setIngredient((prev) => ({
+            ...prev,
+            errors: undefined,
+            loading: true,
+        }));
+        api.post<IngredientInterface["data"]>("ingredients", ingredient.data)
+            .then((res) => {
+                setAddStatus("Ingredient added successfuly");
+                setIngredient((prev) => ({
+                    ...prev,
+                    errors: undefined,
+                    data: undefined,
+                }));
+            })
+            .catch((error: AxiosError<any>) => {
+                if (error.code !== "500") {
+                    setIngredient((prev) => ({
+                        ...prev,
+                        errors: {
+                            message: error.response?.data?.message,
+                            fields: error.response?.data.errors,
+                        },
+                    }));
+                }
+            })
+            .finally(() => {
+                setIngredient((prev) => ({ ...prev, loading: false }));
+            });
     };
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setIngredient({

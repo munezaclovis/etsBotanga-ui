@@ -1,5 +1,3 @@
-import React from "react";
-
 const TableFooter = (data: { columns: string[] }) => {
     return (
         <tfoot>

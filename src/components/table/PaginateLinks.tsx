@@ -1,6 +1,4 @@
 import IPaginate from "../../models/pagination/IPaginate";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
 interface IPaginationLinks {
     data: IPaginate;
     setPage: (page: number) => void;
@@ -46,7 +44,9 @@ const PaginationLinks = (props: IPaginationLinks) => {
         if (enable === true) {
             return (
                 <li
-                    onClick={() => props.setPage((props.data.current_page ?? 1) - 1)}
+                    onClick={() =>
+                        props.setPage((props.data.current_page ?? 1) - 1)
+                    }
                     className="paginate_button page-item previous"
                 >
                     <a className="page-link" role={"button"}>
@@ -66,7 +66,9 @@ const PaginationLinks = (props: IPaginationLinks) => {
         if (enable === true) {
             return (
                 <li
-                    onClick={() => props.setPage((props.data.current_page ?? 1) + 1)}
+                    onClick={() =>
+                        props.setPage((props.data.current_page ?? 1) + 1)
+                    }
                     className="paginate_button page-item next"
                 >
                     <a className="page-link" role={"button"}>
@@ -87,8 +89,8 @@ const PaginationLinks = (props: IPaginationLinks) => {
             <div>
                 <span>
                     Showing <span className="fs-6">{props.data.from}</span> to{" "}
-                    <span className="fs-6">{props.data.to}</span> of <span className="fs-6">{props.data.total}</span>{" "}
-                    results
+                    <span className="fs-6">{props.data.to}</span> of{" "}
+                    <span className="fs-6">{props.data.total}</span> results
                 </span>
             </div>
             <div>
@@ -100,8 +102,14 @@ const PaginationLinks = (props: IPaginationLinks) => {
                         }
                         if (typeof page === "string") {
                             return (
-                                <li key={key} className="paginate_button page-item">
-                                    <span className="page-link text-muted" role={"button"}>
+                                <li
+                                    key={key}
+                                    className="paginate_button page-item"
+                                >
+                                    <span
+                                        className="page-link text-muted"
+                                        role={"button"}
+                                    >
                                         {page}
                                     </span>
                                 </li>
@@ -113,7 +121,9 @@ const PaginationLinks = (props: IPaginationLinks) => {
                                 key={key}
                                 aria-current="page"
                                 className={`paginate_button page-item${
-                                    page === props.data.current_page ? " active" : ""
+                                    page === props.data.current_page
+                                        ? " active"
+                                        : ""
                                 }`}
                             >
                                 <span className="page-link" role={"button"}>

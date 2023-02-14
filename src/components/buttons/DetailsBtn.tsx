@@ -10,7 +10,11 @@ const DetailsBtn: FC<{
 
     if (!user.details?.roles?.find((x) => x.name === "super-admin")) {
         if (permissions !== undefined) {
-            if (!user.details?.roles?.at(0)?.permissions?.find((x) => x.name === permissions)) {
+            if (
+                !user.details?.roles
+                    ?.at(0)
+                    ?.permissions?.find((x) => x.name === permissions)
+            ) {
                 return <></>;
             }
         }

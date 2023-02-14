@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import BackgroundParticles from "../utilities/BackgroundParticles";
 
 const AuthLayout = () => {
