@@ -1,17 +1,16 @@
+import { faLock } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { FormEvent, useContext, useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import FormErrorMessage from "../../components/form/FormErrorMessage";
+import InputErrors from "../../components/form/InputErrors";
+import LoadingSpinner from "../../components/utilities/LoadingSpinner";
 import { IAuthCredentials } from "../../models/auth/IAuth";
 import { AuthContext } from "../../store/auth/context";
-import InputErrors from "../../components/form/InputErrors";
-import FormErrorMessage from "../../components/form/FormErrorMessage";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLock } from "@fortawesome/free-solid-svg-icons";
-import LoadingSpinner from "../../components/utilities/LoadingSpinner";
 const Login = () => {
     const [state, setState] = useState<IAuthCredentials>(
         {} as IAuthCredentials
     );
-    const location = useLocation();
     const navigate = useNavigate();
 
     const { user, login, resetErrors } = useContext(AuthContext);

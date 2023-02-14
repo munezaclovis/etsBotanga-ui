@@ -1,9 +1,8 @@
+import { FaLongArrowAltRight } from "react-icons/fa";
 import IPaginate from "../../models/pagination/IPaginate";
 import IProductStockHistory from "../../models/products/IProductStockHistory";
 import { useProductQuery } from "../../services/api/useApi";
 import { useDateTime } from "../../services/hooks/useDateTime";
-import { FaLongArrowAltRight } from "react-icons/fa";
-import { useQuery } from "react-query";
 
 type PaginatedProductStockHistory = IPaginate & {
     data: Array<IProductStockHistory>;

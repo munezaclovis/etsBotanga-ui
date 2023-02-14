@@ -83,7 +83,7 @@ const CartProvider: FC<IPageProps> = ({ children }) => {
         });
     };
 
-    let value = {
+    const value = {
         cart,
         cartLoading,
         loadCart,

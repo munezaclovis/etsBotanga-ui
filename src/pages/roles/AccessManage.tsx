@@ -1,10 +1,4 @@
-import React, { FormEvent } from "react";
-import getApi from "../../services/api/useApi";
-
 const AccessManage = () => {
-    const api = getApi();
-
-    const onSaveSubmit = (e: FormEvent<HTMLFormElement>) => {};
     return (
         <div className="shadow-sm mb-6 relative min-w-full">
             <div className="flex flex-wrap">

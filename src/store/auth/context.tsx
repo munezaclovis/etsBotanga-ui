@@ -253,7 +253,7 @@ const AuthProvider: FC<IPageProps> = ({ children }) => {
         setUser({ ...user, loading: status });
     };
 
-    let value = {
+    const value = {
         user,
         loginWithToken,
         login,

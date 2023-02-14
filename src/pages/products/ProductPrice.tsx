@@ -1,5 +1,4 @@
 import IProductPrice from "../../models/products/IProductPrice";
-import { useQuery } from "react-query";
 import { useProductQuery } from "../../services/api/useApi";
 
 const ProductPrice: React.FC<{ product_id: string }> = ({ product_id }) => {

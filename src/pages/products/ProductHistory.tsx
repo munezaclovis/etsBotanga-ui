@@ -1,8 +1,7 @@
-import { useDateTime } from "../../services/hooks/useDateTime";
-import IProductHistory from "../../models/products/IProductHistory";
 import IPaginate from "../../models/pagination/IPaginate";
-import { useQuery } from "react-query";
+import IProductHistory from "../../models/products/IProductHistory";
 import { useProductQuery } from "../../services/api/useApi";
+import { useDateTime } from "../../services/hooks/useDateTime";
 
 type PaginatedProductHistory = IPaginate & { data: Array<IProductHistory> };
 

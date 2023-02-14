@@ -1,9 +1,8 @@
+import IPaginate from "../../models/pagination/IPaginate";
+import IProductPriceHistory from "../../models/products/IProductPriceHistory";
+import { useProductQuery } from "../../services/api/useApi";
 import useCurrency from "../../services/hooks/useCurrency";
 import { useDateTime } from "../../services/hooks/useDateTime";
-import IProductPriceHistory from "../../models/products/IProductPriceHistory";
-import IPaginate from "../../models/pagination/IPaginate";
-import { useQuery } from "react-query";
-import { useProductQuery } from "../../services/api/useApi";
 
 type PaginatedProductPriceHistory = IPaginate & {
     data: Array<IProductPriceHistory>;

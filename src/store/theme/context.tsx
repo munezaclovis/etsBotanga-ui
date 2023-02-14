@@ -1,4 +1,4 @@
-import React, { createContext, Dispatch, FC, useReducer } from "react";
+import { createContext, Dispatch, FC, useReducer } from "react";
 import IPageProps from "../../models/shared/IPageProps";
 import IAction from "../shared/IAction";
 import { themeInitState, ThemeReducer } from "./reducer";
@@ -17,8 +17,10 @@ export const ThemeContext = createContext<IContext>({
 const ThemeProvider: FC<IPageProps> = ({ children }) => {
     const [theme, setTheme] = useReducer(ThemeReducer, themeInitState);
 
-    let value = { theme, setTheme };
-    return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
+    const value = { theme, setTheme };
+    return (
+        <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
+    );
 };
 
 export default ThemeProvider;

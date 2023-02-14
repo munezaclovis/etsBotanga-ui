@@ -1,12 +1,12 @@
 import { FaWarehouse } from "react-icons/fa";
-import { useProductMutation, useProductQuery } from "../../services/api/useApi";
+import { useQueryClient } from "react-query";
 import InputErrors from "../../components/form/InputErrors";
+import LoadingSpinner from "../../components/utilities/LoadingSpinner";
 import IProductStock, {
     IProductStockUpdate,
 } from "../../models/products/IProductStock";
-import LoadingSpinner from "../../components/utilities/LoadingSpinner";
+import { useProductMutation, useProductQuery } from "../../services/api/useApi";
 import usePermission from "../../services/hooks/usePermission";
-import { useQueryClient } from "react-query";
 
 const ProductStockForm: React.FC<{ product_id: string }> = ({ product_id }) => {
     const { data } = useProductQuery<IProductStock>(`${product_id}/stock`);

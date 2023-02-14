@@ -1,21 +1,21 @@
-import Notfound from "./pages/errors/notfound";
 import { Navigate, NonIndexRouteObject, Outlet } from "react-router-dom";
-import Dashboard from "./pages/home/dashboard";
+import AuthLayout from "./components/template/AuthLayout";
 import Login from "./pages/authentication/login";
 import Logout from "./pages/authentication/logout";
-import RequireAuth from "./services/middlewares/requireAuth";
 import Register from "./pages/authentication/register";
-import ProductsIndex from "./pages/products/ProductsIndex";
-import UsersIndex from "./pages/users/UsersIndex";
-import AuthLayout from "./components/template/AuthLayout";
-import RolesIndex from "./pages/roles/RolesIndex";
-import ProductsDetails from "./pages/products/ProductsDetails";
-import IngredientsIndex from "./pages/ingredients/IngredientsIndex";
+import Notfound from "./pages/errors/notfound";
+import Dashboard from "./pages/home/dashboard";
+import IngredientsCreate from "./pages/ingredients/IngredientsCreate";
 import IngredientsDetails from "./pages/ingredients/IngredientsDetails";
-import UsersDetails from "./pages/users/UsersDetails";
+import IngredientsIndex from "./pages/ingredients/IngredientsIndex";
 import OrdersIndex from "./pages/orders/OrdersIndex";
 import ProductCreate from "./pages/products/ProductCreate";
-import IngredientsCreate from "./pages/ingredients/IngredientsCreate";
+import ProductsDetails from "./pages/products/ProductsDetails";
+import ProductsIndex from "./pages/products/ProductsIndex";
+import RolesIndex from "./pages/roles/RolesIndex";
+import UsersDetails from "./pages/users/UsersDetails";
+import UsersIndex from "./pages/users/UsersIndex";
+import RequireAuth from "./services/middlewares/requireAuth";
 
 export interface IRouteObject extends NonIndexRouteObject {
     permission?: string;

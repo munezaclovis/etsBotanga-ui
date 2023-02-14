@@ -1,8 +1,8 @@
+import { QueryClient, QueryClientProvider } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
 import { useRoutes } from "react-router-dom";
 import routes from "./router";
 import useApi from "./services/api/useApi";
-import { QueryClientProvider, QueryClient, QueryCache } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
 
 const App = () => {
     const api = useApi();

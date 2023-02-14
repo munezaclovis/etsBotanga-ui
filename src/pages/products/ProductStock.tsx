@@ -1,4 +1,3 @@
-import { useQuery } from "react-query";
 import IProductStock from "../../models/products/IProductStock";
 import { useProductQuery } from "../../services/api/useApi";
 

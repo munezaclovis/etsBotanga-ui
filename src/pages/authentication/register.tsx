@@ -1,11 +1,10 @@
-import React, { FormEvent, useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { useLocation, useNavigate } from "react-router-dom";
-import { IAuthCredentials } from "../../models/auth/IAuth";
-import { AuthContext } from "../../store/auth/context";
+import { FormEvent, useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import FormErrorMessage from "../../components/form/FormErrorMessage";
 import InputErrors from "../../components/form/InputErrors";
 import LoadingSpinner from "../../components/utilities/LoadingSpinner";
+import { IAuthCredentials } from "../../models/auth/IAuth";
+import { AuthContext } from "../../store/auth/context";
 
 const Register = () => {
     const [state, setState] = useState<IAuthCredentials>(

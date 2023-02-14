@@ -1,13 +1,11 @@
 import { Suspense } from "react";
+import { Spinner } from "react-bootstrap";
+import { ErrorBoundary } from "react-error-boundary";
 import { Link } from "react-router-dom";
 import CreateBtn from "../../components/buttons/CreateBtn";
 import BreadCrumb from "../../components/utilities/BreadCrumb";
-import { ErrorBoundary } from "react-error-boundary";
 import Error from "../../components/utilities/Error";
-import CustomSpinner from "../../components/utilities/CustomSpinner";
 import ProductList from "./ProductList";
-import LoadingSpinner from "../../components/utilities/LoadingSpinner";
-import { Spinner } from "react-bootstrap";
 
 const ProductsIndex = () => {
     return (

@@ -1,15 +1,14 @@
-import { useQuery } from "react-query";
-import PaginationLinks from "../../components/table/PaginateLinks";
-import IPaginate from "../../models/pagination/IPaginate";
-import IProduct from "../../models/products/IProduct";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import AddToCartBtn from "../../components/buttons/AddToCartBtn";
 import DeleteBtn from "../../components/buttons/DeleteBtn";
-import { useContext } from "react";
-import { ThemeContext } from "../../store/theme/context";
+import PaginationLinks from "../../components/table/PaginateLinks";
+import IPaginate from "../../models/pagination/IPaginate";
+import IProduct from "../../models/products/IProduct";
+import { useProductQuery } from "../../services/api/useApi";
 import { CartContext } from "../../store/cart/context";
 import { SET_RIGHTBAR } from "../../store/theme/actions";
-import { useProductQuery } from "../../services/api/useApi";
+import { ThemeContext } from "../../store/theme/context";
 
 type PaginatedIProduct = IPaginate & { data: IProduct[] };
 

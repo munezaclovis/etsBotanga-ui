@@ -1,20 +1,18 @@
-import { Suspense } from "react";
 import { useParams } from "react-router-dom";
-import ProductStockHistory from "./ProductStockHistory";
-import Error from "../../components/utilities/Error";
-import ProductHistory from "./ProductHistory";
-import ProductPriceHistory from "./ProductPriceHistory";
-import ProductStock from "./ProductStock";
-import SmallError from "../../components/utilities/SmallError";
-import ProductPrice from "./ProductPrice";
-import ProductDiscount from "./ProductDiscount";
-import ProductCard from "./ProductCard";
-import ProductEditForms from "./ProductEditForms";
 import Can from "../../components/auth/Can";
 import CustomErrorBoundary from "../../components/utilities/CustomErrorBoundary";
+import Error from "../../components/utilities/Error";
+import SmallError from "../../components/utilities/SmallError";
 import TableError from "../../components/utilities/TableError";
-import CustomSpinner from "../../components/utilities/CustomSpinner";
 import TableSpinner from "../../components/utilities/TableSpinner";
+import ProductCard from "./ProductCard";
+import ProductDiscount from "./ProductDiscount";
+import ProductEditForms from "./ProductEditForms";
+import ProductHistory from "./ProductHistory";
+import ProductPrice from "./ProductPrice";
+import ProductPriceHistory from "./ProductPriceHistory";
+import ProductStock from "./ProductStock";
+import ProductStockHistory from "./ProductStockHistory";
 
 const ProductsDetails = () => {
     const params = useParams<{ id: string }>();

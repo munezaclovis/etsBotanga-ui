@@ -3,11 +3,11 @@ import React, { FormEvent, useState } from "react";
 import { AiOutlineDollar } from "react-icons/ai";
 import { FaWarehouse } from "react-icons/fa";
 import { TbShoppingCartDiscount } from "react-icons/tb";
-import getApi from "../../services/api/useApi";
 import FormErrorMessage from "../../components/form/FormErrorMessage";
 import InputErrors from "../../components/form/InputErrors";
 import BreadCrumb from "../../components/utilities/BreadCrumb";
 import LoadingSpinner from "../../components/utilities/LoadingSpinner";
+import getApi from "../../services/api/useApi";
 
 interface ProductInterface {
     loading: boolean;

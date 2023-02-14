@@ -12,7 +12,7 @@ const PaginationLinks = (props: IPaginationLinks) => {
     }
 
     const linksRange = () => {
-        var current = props.data.current_page ?? 1,
+        let current = props.data.current_page ?? 1,
             last = props.data.last_page ?? 1,
             delta = 2,
             left = current - delta,
@@ -27,7 +27,7 @@ const PaginationLinks = (props: IPaginationLinks) => {
             }
         }
 
-        for (let i of range) {
+        for (const i of range) {
             if (l) {
                 if (i - l === 2) {
                     rangeWithDots.push(l + 1);

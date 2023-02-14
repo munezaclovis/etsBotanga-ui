@@ -1,6 +1,5 @@
-import { useContext, useEffect } from "react";
-import { matchRoutes, useLocation } from "react-router-dom";
-import { Navigate } from "react-router-dom";
+import { useContext } from "react";
+import { Navigate, matchRoutes, useLocation } from "react-router-dom";
 import Layout from "../../components/template/layout";
 import settings from "../../data/settings";
 import routes, { IRouteObject } from "../../router";

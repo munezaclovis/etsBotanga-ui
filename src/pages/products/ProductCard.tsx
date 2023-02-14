@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import IProduct from "../../models/products/IProduct";
-import { CartContext } from "../../store/cart/context";
-import { ThemeContext } from "../../store/theme/context";
-import { SET_RIGHTBAR } from "../../store/theme/actions";
-import OrderBtn from "../../components/buttons/OrderBtn";
 import DeleteBtn from "../../components/buttons/DeleteBtn";
-import useApi, { useProductQuery } from "../../services/api/useApi";
+import OrderBtn from "../../components/buttons/OrderBtn";
+import IProduct from "../../models/products/IProduct";
+import { useProductQuery } from "../../services/api/useApi";
+import { CartContext } from "../../store/cart/context";
+import { SET_RIGHTBAR } from "../../store/theme/actions";
+import { ThemeContext } from "../../store/theme/context";
 
 const ProductCard: React.FC<{ product_id: string }> = ({ product_id }) => {
     const { data } = useProductQuery<IProduct>(`${product_id}`);

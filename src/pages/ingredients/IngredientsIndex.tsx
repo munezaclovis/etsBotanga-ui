@@ -1,14 +1,12 @@
 import { AxiosError } from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import IIngredient from "../../models/ingredient/IIngredient";
-import IPaginate from "../../models/pagination/IPaginate";
-import getApi from "../../services/api/useApi";
-import CreateBtn from "../../components/buttons/CreateBtn";
+import { Link, useNavigate } from "react-router-dom";
 import DeleteBtn from "../../components/buttons/DeleteBtn";
 import RestockBtn from "../../components/buttons/RestockBtn";
 import BreadCrumb from "../../components/utilities/BreadCrumb";
+import IIngredient from "../../models/ingredient/IIngredient";
+import IPaginate from "../../models/pagination/IPaginate";
+import getApi from "../../services/api/useApi";
 
 const IngredientsIndex = () => {
     const [ingredients, setIngredients] = useState<
@@ -16,7 +14,6 @@ const IngredientsIndex = () => {
     >();
     const api = getApi();
     const navigate = useNavigate();
-    const [createModal, setCreateModal] = useState(false);
     useEffect(() => {
         api.get<IPaginate & { data: IIngredient[] }>("ingredients?page=1")
             .then((e) => {

@@ -1,12 +1,12 @@
 import { AiOutlineDollar, AiOutlinePercentage } from "react-icons/ai";
-import { useProductMutation, useProductQuery } from "../../services/api/useApi";
+import { useQueryClient } from "react-query";
+import InputErrors from "../../components/form/InputErrors";
+import LoadingSpinner from "../../components/utilities/LoadingSpinner";
 import IProductPrice, {
     IProductPriceUpdate,
 } from "../../models/products/IProductPrice";
-import InputErrors from "../../components/form/InputErrors";
-import LoadingSpinner from "../../components/utilities/LoadingSpinner";
+import { useProductMutation, useProductQuery } from "../../services/api/useApi";
 import usePermission from "../../services/hooks/usePermission";
-import { useQueryClient } from "react-query";
 
 const ProductPriceForm: React.FC<{ product_id: string }> = ({ product_id }) => {
     const { data } = useProductQuery<IProductPrice>(`${product_id}/price`);

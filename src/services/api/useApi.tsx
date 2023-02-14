@@ -1,10 +1,10 @@
 import axios, { AxiosError } from "axios";
-import settings from "../../data/settings";
-import getAccessToken from "../localstorage/getAccessToken";
-import { IProductUpdate } from "../../models/products/IProduct";
-import { useMutation, useQuery } from "react-query";
 import { useErrorHandler } from "react-error-boundary";
+import { useMutation, useQuery } from "react-query";
+import settings from "../../data/settings";
 import IError from "../../models/IError";
+import { IProductUpdate } from "../../models/products/IProduct";
+import getAccessToken from "../localstorage/getAccessToken";
 
 const getApi = () => {
     const state = axios.create({
