@@ -1,4 +1,5 @@
-import { createContext, FC, useState } from "react";
+import { AxiosError, AxiosResponse } from "axios";
+import { FC, createContext, useState } from "react";
 import {
     IAuthCredentials,
     IAuthErrors,
@@ -8,7 +9,6 @@ import {
 import IPageProps from "../../models/shared/IPageProps";
 import { IUser } from "../../models/shared/user/IUser";
 import useApi from "../../services/api/useApi";
-import { AxiosError, AxiosResponse } from "axios";
 import getAccessToken from "../../services/localstorage/getAccessToken";
 
 interface IStateType {
@@ -147,10 +147,13 @@ const AuthProvider: FC<IPageProps> = ({ children }) => {
         const { setToken } = getAccessToken();
         setLoading(true);
 
-        api.post<IAuthCredentials, ILoginResponse>("register", credentials)
-            .then((data) => {
+        api.post<IAuthCredentials, AxiosResponse<ILoginResponse>>(
+            "register",
+            credentials
+        )
+            .then((res) => {
+                const data = res.data;
                 setToken(data.access_token);
-
                 setUser({
                     tokens: { access_token: data.access_token },
                     details: {
@@ -163,8 +166,8 @@ const AuthProvider: FC<IPageProps> = ({ children }) => {
                                 name: role?.name,
                                 permissions: role?.permissions?.map((perm) => {
                                     return {
-                                        id: perm.id,
-                                        name: perm.name,
+                                        id: perm?.id,
+                                        name: perm?.name,
                                     };
                                 }),
                             };
